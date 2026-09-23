@@ -17,8 +17,7 @@ internal static class Program
             var sampleBase = Path.Combine(Path.GetTempPath(), "WACM-path-samples");
             var sampleA = Path.Combine(sampleBase, "日本語 空白;名前.txt");
             var sampleB = Path.Combine(sampleBase, "別.txt");
-            Check(Targets.Parse($" "{sampleA}"
-{sampleB} ").SequenceEqual(new[] { sampleA, sampleB }), "paste quotes Japanese semicolon");
+            Check(Targets.Parse($" \\"{sampleA}\\"\\r\\n{sampleB} ").SequenceEqual(new[] { sampleA, sampleB }), "paste quotes Japanese semicolon");
             var parent = Path.Combine(sampleBase, "A");
             var child = Path.Combine(parent, "b");
             var sibling = Path.Combine(sampleBase, "AB");
