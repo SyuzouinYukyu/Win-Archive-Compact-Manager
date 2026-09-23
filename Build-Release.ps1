@@ -1,6 +1,10 @@
 param([switch]$SkipTests)
 $ErrorActionPreference = 'Stop'
 Set-Location -LiteralPath $PSScriptRoot
+$icon = Join-Path $PSScriptRoot 'assets\WACM.ico'
+if (-not (Test-Path -LiteralPath $icon)) {
+    & (Join-Path $PSScriptRoot 'assets\Generate-Icon.ps1')
+}
 New-Item -ItemType Directory -Path (Join-Path $PSScriptRoot 'docs') -Force | Out-Null
 & (Join-Path $PSScriptRoot 'assets\Generate-Icon.ps1')
 function Checked([string]$title,[scriptblock]$action) { & $action 2>&1 | Tee-Object -FilePath (Join-Path $PSScriptRoot "docs\$title.log"); if ($LASTEXITCODE -ne 0) { throw "$title failed: $LASTEXITCODE" } }
