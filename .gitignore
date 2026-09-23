@@ -427,3 +427,11 @@ FodyWeavers.xsd
 *.msix
 *.msm
 *.msp
+
+# WACM public repository
+assets/WACM.ico
+assets/WACM.png
+artifacts/
+docs/*.log
+docs/RELEASE.txt
+docs/gui-proof/
